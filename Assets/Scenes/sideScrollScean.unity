@@ -144,7 +144,7 @@ Transform:
   m_GameObject: {fileID: 136938402}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.240976, y: -1.0867058, z: -0.01359661}
+  m_LocalPosition: {x: -6.240976, y: -1.1, z: -0.01359661}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -427,9 +427,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 481f19c01d6244ec097bab52d3e6498b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
-  jumpUp: 1
+  speed: 7
+  jumpUp: 8
   direction: {x: 0, y: 0, z: 0}
+  slash: {fileID: 0}
 --- !u!1 &1135710047
 GameObject:
   m_ObjectHideFlags: 0
@@ -532,7 +533,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1756233862}
   - component: {fileID: 1756233863}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BoxColl
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -548,7 +549,7 @@ Transform:
   m_GameObject: {fileID: 1756233861}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 24.36, y: -3.06, z: 0}
+  m_LocalPosition: {x: 24.46, y: -3.03, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
