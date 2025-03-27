@@ -96,4 +96,18 @@ AnimationClip:
   m_EulerEditorCurves: []
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
-  m_Events: []
+  m_Events:
+  - time: 0
+    functionName: RunShadow
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0
+    functionName: RandDust
+    data: 
+    objectReferenceParameter: {fileID: 2531489398993489165, guid: 87a48386b96653f44b2c355ddf812994, type: 3}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
