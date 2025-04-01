@@ -734,7 +734,32 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      player_landdust_8x1_0: -5081166285716849269
+      player_landdust_8x1_1: -7810831616565549356
+      player_landdust_8x1_10: -7530478325596299577
+      player_landdust_8x1_11: 5303163717055284042
+      player_landdust_8x1_12: -413938263295707883
+      player_landdust_8x1_13: 5680761680243772698
+      player_landdust_8x1_14: -6798943423679000829
+      player_landdust_8x1_15: 4022102751223293184
+      player_landdust_8x1_16: -3299519324560282270
+      player_landdust_8x1_17: 2422895053519326393
+      player_landdust_8x1_18: -2548003411152964270
+      player_landdust_8x1_19: 7117135103718889774
+      player_landdust_8x1_2: -5750744188992655703
+      player_landdust_8x1_20: 2494760708089839621
+      player_landdust_8x1_21: 6437729946843781586
+      player_landdust_8x1_22: -8208040726279111884
+      player_landdust_8x1_23: -210030983707193691
+      player_landdust_8x1_24: 2559147073380838983
+      player_landdust_8x1_3: 5588878500877614861
+      player_landdust_8x1_4: 3290560716659221545
+      player_landdust_8x1_5: 8998595617399081424
+      player_landdust_8x1_6: -8649819424134213410
+      player_landdust_8x1_7: -8635984829223381919
+      player_landdust_8x1_8: 2512309651430241011
+      player_landdust_8x1_9: -9115662070127886973
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

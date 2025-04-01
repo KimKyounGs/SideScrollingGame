@@ -1,4 +1,5 @@
- using UnityEngine;
+using UnityEngine;
+using System.Collections.Generic;
 
 public class ShootingEnemy : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class ShootingEnemy : MonoBehaviour
     private Transform player;            //플레이어의 위치 정보
     private float shootTimer;           //발사 타이머
     private SpriteRenderer spriteRenderer; //스프라이트 방향 전환용
+    private Animator animator;         //애니메이션 컨트롤러
 
 
 
@@ -21,8 +23,7 @@ public class ShootingEnemy : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player").transform;
         spriteRenderer = GetComponent<SpriteRenderer>();
         shootTimer = shootingInterval; //타이머 초기화
-
-
+        animator = GetComponent<Animator>(); // 애니메이터 초기화
     }
 
     
@@ -60,6 +61,7 @@ public class ShootingEnemy : MonoBehaviour
         //플레이어 방향으로 발사 방향 설정
         Vector2 direction = (player.position - firePoint.position).normalized;
         missile.GetComponent<EnemyMissile>().SetDirection(direction);
+        missile.GetComponent<SpriteRenderer>().flipX = (player.position.x < transform.position.x);
     }
 
     //디버깅용 기즈모
@@ -67,6 +69,14 @@ public class ShootingEnemy : MonoBehaviour
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, detectionRange);
+    }
+
+    // 적 캐릭터 사망 애니메이션 재생
+    public void PlayDeathAnimation()
+    {
+        animator.SetBool("Death", true);
+        // 선택사항 : 애니메이션 종료후 오브젝트 제거를 위해
+        Destroy(gameObject, animator.GetCurrentAnimatorStateInfo(0).length); // 애니메이션 길이만큼 대기 후 제거
     }
 
 
