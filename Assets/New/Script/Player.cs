@@ -6,7 +6,7 @@ public class Player : MonoBehaviour
 {
 
     public float speed = 5;
-    public float jumpUp = 5;
+    public float jumpUp = 1;
     public float power = 5;
     public Vector3 direction;
     public GameObject slash;
@@ -21,6 +21,17 @@ public class Player : MonoBehaviour
     Rigidbody2D rigid;
     SpriteRenderer sprit;
 
+    //벽점프
+    public Transform wallChk;
+    public float wallchkDistance;
+    public LayerMask wLayer;
+    bool isWall;
+    public float slidingSpeed;
+    public float wallJumpPower;
+    public bool isWallJump;
+    float isRight = 1;
+       
+
     void Start()
     {
         ani = GetComponent<Animator>();
@@ -31,10 +42,37 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        KeyInput();
-        Move();
+        if (!isWallJump)
+        {
+            KeyInput();
+            Move();
+            Attack();
+        }
+         //벽인지 체크
+        isWall = Physics2D.Raycast(wallChk.position, Vector2.right * isRight, wallchkDistance, wLayer);
+        ani.SetBool("Grab", isWall);
+        if(isWall)
+        {
+            isWallJump = false;
+            //벽점프상태
+            rigid.linearVelocity = new Vector2(rigid.linearVelocityX, rigid.linearVelocityY * slidingSpeed);
+            //벽을 잡고있는 상태에서 점프
+            if(Input.GetKeyDown(KeyCode.W))
+            {
+                isWallJump = true;
+                //벽점프 먼지
+
+                Invoke("FreezeX", 0.3f);
+                //물리
+                rigid.linearVelocity = new Vector2(-isRight * wallJumpPower, 0.9f * wallJumpPower);
+
+                sprit.flipX = sprit.flipX == false ? true : false;
+                isRight = -isRight;
+            }
+
+        }
         Jump();
-        Attack();
+        
     }
 
     void FixedUpdate()
@@ -55,6 +93,12 @@ public class Player : MonoBehaviour
         }
     }
 
+    void FreezeX()
+    {
+        isWallJump = false;
+    }
+
+
     void KeyInput()
     {
         direction.x = Input.GetAxisRaw("Horizontal");
@@ -63,6 +107,8 @@ public class Player : MonoBehaviour
         {
             sprit.flipX = true;
             ani.SetBool("Run", true);
+
+            isRight = -1;
 
             //Shadowflip
             for(int i =0; i<sh.Count; i++)
@@ -74,6 +120,8 @@ public class Player : MonoBehaviour
         {
             sprit.flipX = false;
             ani.SetBool("Run", true);
+
+            isRight = 1;
             //Shadowflip
             for (int i = 0; i < sh.Count; i++)
             {
@@ -119,7 +167,6 @@ public class Player : MonoBehaviour
         {
             ani.SetTrigger("Attack");
             Instantiate(hit_lazer, transform.position, Quaternion.identity);
-
         }
     }
  
@@ -161,6 +208,6 @@ public class Player : MonoBehaviour
 
     public void JumpDust()
     {
-     Instantiate(Jdust, transform.position, Quaternion.identity);
+        Instantiate(Jdust, transform.position, Quaternion.identity);
     }
 }
